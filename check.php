@@ -26,7 +26,7 @@ $systemMessage = $vv[0][2];
 
 // <span class="system-message-error">След 29.03.2010 г. лицето с ЕГН [XXXXXXXXXX] няма издаден документ от избрания вид или същият вече е получен.</span>
 
-if (stripos($systemMessage, 'няма издаден документ') !== true) {
+if (stripos($systemMessage, 'няма издаден документ') !== false) {
     \Symfony\Component\VarDumper\VarDumper::dump($systemMessage);
 } else {
     $mailer = new \PHPMailer\PHPMailer\PHPMailer();
@@ -40,7 +40,7 @@ if (stripos($systemMessage, 'няма издаден документ') !== true
     $mailer->SMTPSecure = getenv('SMTP_SECURITY');
     $mailer->Port = getenv('SMTP_PORT');
     $mailer->From = getenv('MAIL_FROM');
-    $mailer->FromName = 'Izdadeni MVR BOT 2';
+    $mailer->FromName = 'Izdadeni MVR BOT';
     $mailer->addAddress(getenv('MAIL_TO'));
 
     $mailer->Subject = '[BOT] izdadeni.mvr.bg';
