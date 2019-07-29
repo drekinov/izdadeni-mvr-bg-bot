@@ -1,0 +1,7 @@
+Options Includes FollowSymLinks MultiViews
+#Order Allow,Deny
+#Allow from 10.0.0.1/24
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
